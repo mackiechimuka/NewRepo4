@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ContosoUniversity.Models.Course>
+
+@{
+    ViewData["Title"] = "Courses";
+}
+
+<h1 style="color:skyblue;">Courses</h1>
+
+<p>
+    <a class="btn btn-success" asp-action="Create">Create New</a>
+</p>
+<table class="table table table-hover table-bordered shadow p-3 mb-5 bg-white rounded">
+    <thead style="background-color:skyblue;color:white;">
+        <tr>
+            <th >
+                @Html.DisplayNameFor(model => model.CourseID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Credits)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+       @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseID)
+             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Credits)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department.Name)
+            </td>
+            <td>
+                <a class="text-success" asp-action="Edit" asp-route-id="@item.CourseID">Edit</a> |
+                <a class="text-primary" asp-action="Details" asp-route-id="@item.CourseID">Details</a> |
+                <a class="text-danger" asp-action="Delete" asp-route-id="@item.CourseID">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
